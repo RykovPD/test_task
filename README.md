@@ -1,46 +1,192 @@
-# Getting Started with Create React App
+# Тестовое задание для frontend-разработчика javascript
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## **Установка и запуск**
 
-## Available Scripts
+- склонировать репозиторий - `git clone https://github.com/godninoff/react-jwt-auth.git`
+- перейти в папку с проектом - `cd react-jwt-auth/client`
+- `npm i` - установить зависимости
+- `cd ../` - вернуться в общую папку с сервером
+- `npm run dev` - запустить приложение с сервером.
 
-In the project directory, you can run:
+## Задача
 
-### `npm start`
+Реализовать одностраничное приложение (SPA), в котором пользователь может зарегистрироваться и просмотреть личную информацию о себе.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Для простоты разработки данного приложения в виде backend-части в данном репозитории представлен файл `app.js`. backend-часть дополнять и изменять `не нужно`. Процесс запуска api на вашей машине описан ниже.
+Авторизация и регистрация на backend-части реализована через [JSON Web Token](https://ru.wikipedia.org/wiki/JSON_Web_Token).
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Требования
 
-### `npm test`
+Приложение должно состоять из следующих страниц:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. `/login` - страница с формой входа
+2. `/register` - страница с формой регистрации
+3. `/` - Главная страница с информацией о пользователе.
 
-### `npm run build`
+**Описание страницы `/login`**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Здесь содержится форма авторизации пользователя.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Также должен быть предусмотрен переход на страницу `/register` в виде кнопки.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Описание страницы `/register`**
 
-### `npm run eject`
+Здесь содержится форма регистрации пользователя.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Также должен быть предусмотрен переход на страницу `/login` в виде кнопки.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**Описание страницы `/` - Главная страница**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Здесь содержится информация о пользователе - его аватар, текст о себе, имя пользователя.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Желательно оформить в виде карточки.
 
-## Learn More
+## Технические требования
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Убедитесь, что у вас стоит Node.js последней LTS версии: https://nodejs.org/en/
+- Приложение должно быть написано на `typescript`.
+- Основная библиотека - `React`.
+- Компонентная библиотека - `ant-design`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Запуск API
+
+1. Убедитесь, что у вас стоит последняя node LTS версии. Ссылка для скачивания: https://nodejs.org/en/
+2. В консоли открыть папку `frontend`
+3. Устанавливаем зависимости api - в консоли запускаем команду `npm install`
+4. Запускаем api - в консоли запускаем команду `node app.js`
+
+В результате в консоли получаем output:
+
+```
+Сервер с API стартовал по адресу http://localhost:8080
+```
+
+При выполнении запросов к api в консоли будут возникать логи, удобно для тестирования приложения.
+
+## Запрос с jwt-токеном
+
+Чтобы отправить запрос с токеном нужно указать заголовок `Authorization: Bearer ${токен пользователя}`
+
+## Примечания
+
+1. Реализацию frontend-части следует делать `в отдельном репозитории`, а не в этом репозитории. Этот репозиторий содержит в себе только backend-часть в виде api.
+1. Во время разработки приложения не стоит изобретать велосипеды. Для компонентов формы и карточек предусмотрена библиотека `ant-design`.
+1. При работе с `React` следует использовать `React Router`. State-manager на ваше усмотрение.
+1. Приложение должно быть разработанно на функциональных компонентах, с использованием `React Hooks`.
+1. При разработке использовать статическую типизацию и другие возможности `typescript`
+1. При перезапуске backend-части приложения список пользователей сбрасывается к стандартному состоянию!
+1. Написанные unit/e2e-тесты будут плюсом. Для юнитов у нас используется `jest`, для e2e - `cypress`
+
+---
+
+# Результат проделанной работы
+
+Результат данного тестового задания следует опубликовать на `github.com` в виде репозитория с публичным доступом
+
+---
+
+## Описание endpoint'ов API
+
+Ниже будут представлены все возможные endpoint'ы api.
+
+Важные замечания:
+
+- По умолчанию api запускается по адресу `http://localhost:8080`
+- При перезапуске api пользователи сбрасываются в стандартное состояние
+- Для теста api можно использовать `postman` или любую другую утилиту, которая умеет слать http-запросы
+
+### `/login/` - авторизация пользователя
+
+Данный эндпоинт принимает запросы на авторизацию пользователей.
+Метод HTTP-запроса - `POST`
+
+### Тело запроса (в виде json)
+
+| Поле     |  Тип   | Обязательно | Описание         |
+| -------- | :----: | :---------: | ---------------- |
+| username | String |      +      | Имя пользователя |
+| password | String |      +      | Пароль           |
+
+### Возможные ответы эндпоинта
+
+#### 200 - успешная авторизация
+
+| Поле  |  Тип   | Описание                     | Значение                    |
+| ----- | :----: | ---------------------------- | --------------------------- |
+| token | String | JWT-токен пользователя       | %сгенерированный jwt-токен% |
+| error | String | Ошибка, если таковая имеется | null                        |
+
+#### 401 - неправильные имя пользователя/пароль
+
+| Поле  |  Тип   | Описание | Значение                                     |
+| ----- | :----: | -------- | -------------------------------------------- |
+| token | String | Токен    | null                                         |
+| error |  null  | Ошибка   | "Введите правильные имя пользователя/пароль" |
+
+---
+
+### `/register/` - регистрация пользователя
+
+Данный эндпоинт принимает запросы на авторизацию пользователей.
+Метод HTTP-запроса - `POST`
+
+### Тело запроса (в виде json)
+
+| Поле     |  Тип   | Обязательно | Описание         |
+| -------- | :----: | :---------: | ---------------- |
+| username | String |      +      | Имя пользователя |
+| password | String |      +      | Пароль           |
+
+### Возможные ответы эндпоинтa
+
+#### 200 - успешная регистрация
+
+| Поле    |  Тип   | Описание  | Значение                               |
+| ------- | :----: | --------- | -------------------------------------- |
+| message | String | Сообщение | "Пользователь успешно зарегистрирован" |
+
+### 401 - регистрация не удалась
+
+| Поле    |  Тип   | Описание  | Значение                                          |
+| ------- | :----: | --------- | ------------------------------------------------- |
+| message | String | Сообщение | "Пользователь с таким именем уже зарегистрирован" |
+
+---
+
+### `/about/` - Информация о пользователе
+
+Данный эндпоинт возвращает информацию о пользователе, которая есть на сервере
+Метод HTTP-запроса - `GET`
+
+### Возможные ответы эндпоинтa
+
+### 200 - успешное получение информации
+
+| Поле     |   Тип   | Описание                                         | Значение           |
+| -------- | :-----: | ------------------------------------------------ | ------------------ |
+| id       | Integer | id пользователя                                  | %id пользователя%  |
+| username | String  | Имя пользователя                                 | %имя пользователя% |
+| avatar   | String  | http-ссылка на картинку с аватаркой пользователя | %avatar%           |
+| about    | String  | Текст "о пользователе"                           | %текст в api%      |
+
+### 401 - пользователь не авторизован
+
+Если в заголовке не передавать jwt-токен, либо jwt-токен был просрочен - вернется ответ
+
+### 400 - не удалось получить информацию
+
+| Поле    |  Тип   | Описание  | Значение                                        |
+| ------- | :----: | --------- | ----------------------------------------------- |
+| message | String | Сообщение | "Не удалось получить информацию о пользователе" |
+
+---
+
+## Технологии
+
+- https://reactjs.org/ - React
+- https://reactjs.org/docs/static-type-checking.html#typescript - typescript
+- https://reactjs.org/docs/hooks-reference.html - React Hooks API
+- https://ant.design/ - ant-design
+- https://reactrouter.com/ - React router
+- https://redux-toolkit.js.org/rtk-query/overview - RTK Query
+- https://www.npmjs.com/package/redux-persist - Redux Persist

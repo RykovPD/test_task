@@ -1,0 +1,58 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+h2 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.backend-error-text {
+  font-size: 12px;
+  color: #ee3465;
+}
+
+.login-form {
+  width: 300px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.login-form-button {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.input-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ant-card-meta-title {
+  text-align: center;
+}
+
+.main-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ant-card,
+.ant-btn {
+  margin-top: 25px;
+}
+
+.error-page {
+  display: flex;
+  flex-direction: column;
+  padding: 10rem 2rem;
+}
